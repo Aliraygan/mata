@@ -620,7 +620,7 @@ save_data(_config.moderation.data, data)
 if not lang then
  return "》*#lø¢κ* _ρøšтłиg ħαš вeeи lø¢κeđ_🔒\n*〰〰〰〰〰〰〰〰*\n*øяđeявч*: [@"..(check_markdown(msg.from.username) or 'No υʂҽɾɳαɱҽ').."]"
 else
- return "》ارسال #لینک در گروه ممنوع شد🔒\n*〰〰〰〰〰〰〰〰*\nسفارش توسط : [@"..(check_markdown(msg.from.username) or 'یوزنیم ندارد').."
+ return "》ارسال #لینک در گروه ممنوع شد🔒\n*〰〰〰〰〰〰〰〰*\nسفارش توسط : [@"..(check_markdown(msg.from.username) or 'یوزنیم ندارد').."]"
 end
 end
 end
@@ -3075,9 +3075,12 @@ local target = msg.to.id
 if matches[2] == "link"  or matches[2]=="لینک" then
 return unlock_link(msg, data, target)
 end
-if matches[2] == "tag"  or matches[2]=="تگ" then
+if matches[2] == "username"  or matches[2]=="یوزرنیم" then
 return unlock_username(msg, data, target)
 end
+if matches[2] == "hashtag"  or matches[2]=="هشتگ" then
+return unlock_hashtags(msg, data, target)
+end				
 if matches[2] == "mention"  or matches[2]=="فراخوانی" then
 return unlock_mention(msg, data, target)
 end

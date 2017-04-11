@@ -257,7 +257,7 @@ end
 function check_markdown(text) --markdown escape ( when you need to escape markdown , use it like : check_markdown('your text')
 		str = text
 		if str:match('_') then
-			output = str:gsub('_','\\_')
+			output = str:gsub('_',[[\_]])
 		elseif str:match('*') then
 			output = str:gsub('*','\\*')
 		elseif str:match('`') then
@@ -540,7 +540,7 @@ local hash = "gp_lang:"..chat_id
 local lang = redis:get(hash)
     local data = load_data(_config.moderation.data)
     local i = 1
-  if not data[tostring(msg.chat_id_)] then
+  if not data[tostring(chat_id)] then
   if not lang then
     return '_Group is not added_'
 else
@@ -561,7 +561,7 @@ else
    message = '_لیست کاربران محروم شده از گروه :_\n'
      end
   for k,v in pairs(data[tostring(chat_id)]['banned']) do
-    message = message ..i.. '- '..check_markdown(v)..' [' ..k.. '] \n'
+    message = message ..i.. '- '..v..' [' ..k.. '] \n'
    i = i + 1
 end
   return message
@@ -572,7 +572,7 @@ local hash = "gp_lang:"..chat_id
 local lang = redis:get(hash)
     local data = load_data(_config.moderation.data)
     local i = 1
-  if not data[tostring(msg.chat_id_)] then
+  if not data[tostring(chat_id)] then
   if not lang then
     return '_Group is not added_'
 else
@@ -593,8 +593,76 @@ else
    message = '_لیست کاربران سایلنت شده :_\n'
     end
   for k,v in pairs(data[tostring(chat_id)]['is_silent_users']) do
-    message = message ..i.. '- '..check_markdown(v)..' [' ..k.. '] \n'
+    message = message ..i.. '- '..v..' [' ..k.. '] \n'
    i = i + 1
 end
   return message
 end
+
+ function gbanned_list(msg)
+local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+    local data = load_data(_config.moderation.data)
+    local i = 1
+  if not data['gban_users'] then
+    data['gban_users'] = {}
+    save_data(_config.moderation.data, data)
+  end
+  if next(data['gban_users']) == nil then --fix way
+    if not lang then
+					return "_No_ *globally banned* _users available_"
+   else
+					return "*هیچ کاربری از گروه های ربات محروم نشده*"
+             end
+				end
+        if not lang then
+   message = '*List of globally banned users :*\n'
+   else
+   message = '_لیست کاربران محروم شده از گروه های ربات :_\n'
+   end
+  for k,v in pairs(data['gban_users']) do
+    message = message ..i.. '- '..v..' [' ..k.. '] \n'
+   i = i + 1
+end
+  return message
+end
+
+ function filter_list(msg)
+local hash = "gp_lang:"..msg.chat_id_
+local lang = redis:get(hash)
+    local data = load_data(_config.moderation.data)
+  if not data[tostring(msg.chat_id_)]['filterlist'] then
+    data[tostring(msg.chat_id_)]['filterlist'] = {}
+    save_data(_config.moderation.data, data)
+    end
+  if not data[tostring(msg.chat_id_)] then
+  if not lang then
+    return '_Group is not added_'
+else
+    return 'گروه به لیست گروه های مدیریتی ربات اضافه نشده است'
+   end
+  end
+  -- determine if table is empty
+  if next(data[tostring(msg.chat_id_)]['filterlist']) == nil then --fix way
+      if not lang then
+    return "*Filtered words list* _is empty_"
+      else
+    return "_لیست کلمات فیلتر شده خالی است_"
+     end
+  end
+  if not data[tostring(msg.chat_id_)]['filterlist'] then
+    data[tostring(msg.chat_id_)]['filterlist'] = {}
+    save_data(_config.moderation.data, data)
+    end
+      if not lang then
+       filterlist = '*List of filtered words :*\n'
+         else
+       filterlist = '_لیست کلمات فیلتر شده :_\n'
+    end
+ local i = 1
+   for k,v in pairs(data[tostring(msg.chat_id_)]['filterlist']) do
+              filterlist = filterlist..'*'..i..'* - _'..check_markdown(k)..'_\n'
+             i = i + 1
+         end
+     return filterlist
+   end

@@ -22,28 +22,29 @@ local function plugin_exists( name )
 end
 
 local function list_all_plugins(only_enabled)
-  local tmp = check_markdown('\n\n@HackerTele')
+  local tmp = check_markdown('@HackerTele\n@BumpTeam')
   local text = ''
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ➕ فعال, ➖ غیرفعال
-    local status = '*👉🔹➖🔹👉*'
+      -- get the name				
+    local status = '👉*➖*'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '*👉🔹➕🔹👉*'
+        status = '👉*➕*'
       end
       nact = nact+1
     end
-    if not only_enabled or status == '*👉🔹➕🔹👉*'then
-      -- get the name
+		
+    if not only_enabled or status == '👉*➕*'then
       v = string.match (v, "(.*)%.lua")
       text = text..nsum..'.'..status..' '..v..' \n'
     end
   end
-  local text = text..'\n\n'..nsum..' *🔶پلاگین نصــب شده*\n\n'..nact..' _➕پلاگین فعــال_\n\n'..nsum-nact..' _➖پلاگین غیــرفعــال_'..tmp
+  local text = text..'*🔏پلاگین نصــب شده*👈'..nsum..'\n🔒_پلاگین فعــال_👈'..nact..'\n_🔓پلاگین غیــرفعــال_👈'..nsum-nact..'\n'..tmp
   return text
 end
 
@@ -52,23 +53,23 @@ local function list_plugins(only_enabled)
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ➕ enabled, ➖ disabled
-    local status = '*👉🔹➖🔹👉*'
+    local status = '👉*➖*'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '*👉🔹➕🔹👉*'
+        status = '👉*➕*'
       end
       nact = nact+1
     end
-    if not only_enabled or status == '*👉🔹➕🔹👉*'then
-      -- get the name
+      -- get the name			
+    if not only_enabled or status == '👉*➕*'then
       v = string.match (v, "(.*)%.lua")
      -- text = text..v..'  '..status..'\n'
     end
   end
-  local text = text.."\n_🔄پلاگینها تازه سازی شدنــد🔄_\n"..nsum.." *🔶پلاگین نصـب شده*\n"..nact.." *➕پلاگین فعــال*\n"..nsum-nact.." *➖پلاگین غیــرفعــال*\n@HackerTele"
+  local text = text.."\n_🔄پلاگینها تازه سازی شدنــد🔄_\n🔏*پلاگینهای نصـب شده*👈"..nsum.."\n🔒*پلاگینهای فعــال*👈"..nact.." \n🔓*پلاگینهای غیــرفعــال*👈"..nsum-nact.." \n@HackerTele\n@BumpTeam"
 return text
 end
 
@@ -154,12 +155,12 @@ end
 local function run(msg, matches)
   -- Show the available plugins 
   if is_sudo(msg) then
-  if matches[1]:lower() == '!plist' or matches[1]:lower() == '/plist' or matches[1]:lower() == '#plist' then --after changed to moderator mode, set only sudo
+  if matches[1]:lower() == '!پلاگینها' or matches[1]:lower() == '/پلاگینها' or matches[1]:lower() == '#پلاگینها' then --after changed to moderator mode, set only sudo
     return list_all_plugins()
   end
 end
   -- Re-enable a plugin for this chat
-   if matches[1] == 'pl' or matches[1] == 'Pl' then
+   if matches[1] == 'پلاگین' or matches[1] == 'پلاگین' then
   if matches[2] == '+' and matches[4] == 'chat' then
       if is_momod(msg) then
     local receiver = msg.chat_id_
@@ -199,7 +200,7 @@ end
   if matches[1] == '*' and is_sudo(msg) then --after changed to moderator mode, set only sudo
     return reload_plugins(true)
   end
-  if matches[1]:lower() == 'reload' and is_sudo(msg) or matches[1]:lower() == 'Reload' and is_sudo(msg) then --after changed to moderator mode, set only sudo
+  if matches[1]:lower() == 'reload' and is_sudo(msg) or matches[1]:lower() == 'تازه سازی' and is_sudo(msg) then --after changed to moderator mode, set only sudo
     return reload_plugins(true)
   end
 end
@@ -218,18 +219,18 @@ return {
           "!pl * : reloads all plugins." },
           },
   patterns = {
-    "^[!/#]plist$",
-    "^[!/#](pl) (+) ([%w_%.%-]+)$",
-    "^[!/#](pl) (-) ([%w_%.%-]+)$",
-    "^[!/#](pl) (+) ([%w_%.%-]+) (chat)",
-    "^[!/#](pl) (-) ([%w_%.%-]+) (chat)",
-    "^!pl? (*)$",
-    "^[!/](reload)$",
-    "^([Pp]l) (+) ([%w_%.%-]+)$",
-    "^([Pp]l) (-) ([%w_%.%-]+)$",
-    "^([Pp]l) (+) ([%w_%.%-]+) (chat)",
-    "^([Pp]l) (-) ([%w_%.%-]+) (chat)",
-	"^([Rr]eload)$"
+    "^[!/#]پلاگینها$",
+    "^[!/#](پلاگین) (+) ([%w_%.%-]+)$",
+    "^[!/#](پلاگین) (-) ([%w_%.%-]+)$",
+    "^[!/#](پلاگین) (+) ([%w_%.%-]+) (chat)",
+    "^[!/#](پلاگین) (-) ([%w_%.%-]+) (chat)",
+    "^!پلاگین? (*)$",
+    "^[!/](تازه سازی)$",
+    "^(پلاگین) (+) ([%w_%.%-]+)$",
+    "^(پلاگین) (-) ([%w_%.%-]+)$",
+    "^(پلاگین) (+) ([%w_%.%-]+) (chat)",
+    "^(پلاگین) (-) ([%w_%.%-]+) (chat)",
+	"^(تازه سازی)$"
     },
   run = run
 }

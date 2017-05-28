@@ -27,23 +27,23 @@ local function list_all_plugins(only_enabled)
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ➕ فعال, ➖ غیرفعال
-    local status = '*[➖]➣*'
+    local status = '*👉🔹➖🔹👉*'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '*[➕]➣*'
+        status = '*👉🔹➕🔹👉*'
       end
       nact = nact+1
     end
-    if not only_enabled or status == '*[➕]➣*'then
+    if not only_enabled or status == '*👉🔹➕🔹👉*'then
       -- get the name
       v = string.match (v, "(.*)%.lua")
       text = text..nsum..'.'..status..' '..v..' \n'
     end
   end
-  local text = text..'\n\n'..nsum..' *📁plugins installed*\n\n'..nact..' _➕plugins enabled_\n\n'..nsum-nact..' _➖plugins disabled_'..tmp
+  local text = text..'\n\n'..nsum..' *🔶پلاگین نصــب شده*\n\n'..nact..' _➕پلاگین فعــال_\n\n'..nsum-nact..' _➖پلاگین غیــرفعــال_'..tmp
   return text
 end
 
@@ -52,23 +52,23 @@ local function list_plugins(only_enabled)
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ➕ enabled, ➖ disabled
-    local status = '*[➖]➣*'
+    local status = '*👉🔹➖🔹👉*'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '*[➕]➣*'
+        status = '*👉🔹➕🔹👉*'
       end
       nact = nact+1
     end
-    if not only_enabled or status == '*[➕]➣*'then
+    if not only_enabled or status == '*👉🔹➕🔹👉*'then
       -- get the name
       v = string.match (v, "(.*)%.lua")
      -- text = text..v..'  '..status..'\n'
     end
   end
-  local text = text.."\n_🍃All Plugins Reloaded🍃_\n\n"..nact.." *➕Plugins Enabled*\n"..nsum.." *📁Plugins Installed*\n\n\n@HackerTele"
+  local text = text.."\n_🔄پلاگینها تازه سازی شدنــد🔄_\n"..nsum.." *🔶پلاگین نصـب شده*\n"..nact.." *➕پلاگین فعــال*\n"..nsum-nact.." *➖پلاگین غیــرفعــال*\n@HackerTele"
 return text
 end
 

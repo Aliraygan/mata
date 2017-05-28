@@ -79,19 +79,19 @@ local function info_by_username(arg, data)
   lastname = ""
   end
 	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+   local text = "_نام :_ *"..firstname.."*\n_نام خانوادگی :_ *"..lastname.."*\n_یوزرنیم :_ "..username.."\n_ایدی :_ *"..data.id_.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_مقام :_ *صاحب کل ربات*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_مقام :_ *سودو*\n\n'
 		     elseif is_admin1(data.id_) then
-		       text = text..'_Rank :_ *Bot Admin*\n\n'
+		       text = text..'_مقام :_ *ادمین*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Owner*\n\n'
+		       text = text..'_مقام :_ *مالک*\n\n'
 		     elseif is_mod1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Moderator*\n\n'
+		       text = text..'_مقام :_ *معاون*\n\n'
 		 else
-		       text = text..'_Rank :_ *Group Member*\n\n'
+		       text = text..'_مقام :_ *عضو*\n\n'
 			end
          local user_info = {} 
   local uhash = 'user:'..data.id_
@@ -123,20 +123,20 @@ local function info_by_id(arg, data)
     else
   lastname = ""
   end
-	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+	local hash = 'مقام:'..arg.chat_id..':variables'
+   local text = "_نام :_ *"..firstname.."*\n_نام خانوادگی :_ *"..lastname.."*\n_یوزرنیم :_ "..username.."\n_ایدی :_ *"..data.id_.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_مقام :_ *صاحب کل ربات*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_مقام :_ *سودو*\n\n'
 		     elseif is_admin1(data.id_) then
-		       text = text..'_Rank :_ *Bot Admin*\n\n'
+		       text = text..'_مقام :_ *ادمین*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Owner*\n\n'
+		       text = text..'_مقام :_ *مالک*\n\n'
 		     elseif is_mod1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Moderator*\n\n'
+		       text = text..'_مقام :_ *معاون*\n\n'
 		 else
-		       text = text..'_Rank :_ *Group Member*\n\n'
+		       text = text..'_مقام :_ *عضو*\n\n'
 			end
          local user_info = {} 
   local uhash = 'user:'..data.id_
@@ -194,20 +194,20 @@ local function info2_cb(arg, data)
     else
   lastname = ""
   end
-	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+	local hash = 'مقام:'..arg.chat_id..':variables'
+   local text = "_نام :_ *"..firstname.."*\n_نام خانوادگی :_ *"..lastname.."*\n_یوزرنیم :_ "..username.."\n_ایدی:_ *"..data.id_.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_مقام :_ *صاحب کل ربات*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_مقام :_ *سودو*\n\n'
 		     elseif is_admin1(data.id_) then
-		       text = text..'_Rank :_ *Bot Admin*\n\n'
+		       text = text..'_مقام :_ *ادمین*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Owner*\n\n'
+		       text = text..'_مقام :_ *مالک*\n\n'
 		     elseif is_mod1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Moderator*\n\n'
+		       text = text..'_مقام :_ *معاون*\n\n'
 		 else
-		       text = text..'_Rank :_ *Group Member*\n\n'
+		       text = text..'_مقام :_ *عضو*\n\n'
 		 end
          local user_info = {} 
   local uhash = 'user:'..data.id_

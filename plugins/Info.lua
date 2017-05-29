@@ -29,19 +29,19 @@ local function info_cb(arg, data)
   lastname = ""
   end
 	local hash = 'rank:'..arg.chat_id..':variables'
-   local text = "_First name :_ *"..firstname.."*\n_Last name :_ *"..lastname.."*\n_Username :_ "..username.."\n_ID :_ *"..data.id_.."*\n\n"
+   local text = "*First Name :* *"..firstname.."*\n_Last Name :_ *"..lastname.."*\n*Username :* "..username.."\n_ID :_ *"..data.id_.."*\n\n"
 		    if data.id_ == tonumber(Solid) then
-		       text = text..'_Rank :_ *Executive Admin*\n\n'
+		       text = text..'_Rank :_ *Sudo*\n\n'
 			   elseif is_sudo1(data.id_) then
-	           text = text..'_Rank :_ *Full Access Admin*\n\n'
+	           text = text..'_Rank :_ *sudo*\n\n'
 		     elseif is_admin1(data.id_) then
-		       text = text..'_Rank :_ *Bot Admin*\n\n'
+		       text = text..'_Rank :_ *Admin*\n\n'
 		     elseif is_owner1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Owner*\n\n'
+		       text = text..'_Rank :_ *Owner*\n\n'
 		     elseif is_mod1(arg.chat_id, data.id_) then
-		       text = text..'_Rank :_ *Group Moderator*\n\n'
+		       text = text..'_Rank :_ *Moderator*\n\n'
 		 else
-		       text = text..'_Rank :_ *Group Member*\n\n'
+		       text = text..'_Rank :_ *Member*\n\n'
 			end
          local user_info = {} 
   local uhash = 'user:'..data.id_

@@ -151,7 +151,7 @@ local lang = redis:get(hash)
       data[tostring(msg.to.id)]['filterlist'][(word)] = nil
        save_data(_config.moderation.data, data)
        if not lang then
-         return "#》_ωøяκ_ *"..word.."* _яeмøνeđ fяαм fłlтeяeđ ωøяκ lłšт_ ❌"
+         return "#》_ωøяκ_ *"..word.."* _яeмøνeđ fяαм fłlтeяeđ work lłšт_ ❌"
        elseif lang then
          return "#》_کلمه_ *"..word.."* _از لیست کلمات فیلتر حذف شد_❌"
      end

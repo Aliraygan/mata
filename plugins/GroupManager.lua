@@ -2840,14 +2840,14 @@ if not matches[2] and not msg.reply_id then
 local function getpro(arg, data)
  if data.photos_[0] then
        if not lang then
-            tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'😼Chat ID : '..msg.to.id..'\n😾User ID : '..msg.from.id,dl_cb,👈nil)
+            tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'👨‍👨‍👦Group ID 👉 '..msg.to.id..'\n👱User ID 👉 '..msg.from.id,dl_cb,nil)
        elseif lang then
-          tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'😾شناسه گروه : '..msg.to.id..'\n😼شناسه شما : '..msg.from.id,dl_cb,👈nil)     end
+          tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'👨‍👨‍👦شناسه گروه 👉 '..msg.to.id..'\n👱شناسه شما 👉 '..msg.from.id,dl_cb,nil)     end
    else
        if not lang then
-      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`You Have Not Profile Photo...!`\n\n> 😼*Chat ID :* `"..msg.to.id.."`\n😾*User ID :* `"..msg.from.id.."`", 1, 'md')
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`You Have Not Profile Photo...!`\n\n> 👨‍👨‍👦*Group ID 👉* `"..msg.to.id.."`\n👱*User ID 👉* `"..msg.from.id.."`", 1, 'md')
        elseif lang then
-      tdcli.sendMessage(msg.to.id, msg.id_, 1, "_شما هیچ عکسی ندارید...!_\n\n> 😾_شناسه گروه :_ `"..msg.to.id.."`\n😼_شناسه شما :_ `"..msg.from.id.."`", 1, 'md')
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "_شما هیچ عکسی ندارید...!_\n\n> 👨‍👨‍👦_شناسه گروه 👉_ `"..msg.to.id.."`\n👱_شناسه شما 👉_ `"..msg.from.id.."`", 1, 'md')
             end
         end
 end

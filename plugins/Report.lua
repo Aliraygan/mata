@@ -26,8 +26,8 @@ local function run(msg, matches)
     else
      user_name = data.first_name_
     end
-    tdcli.sendMessage(msg.chat_id_, 0, 1,  '_send to you a report_', 1, 'md')
-    tdcli.sendMessage(master, 0, 1, '[ <code>'..msg.sender_user_id_..'</code> ] '..user_name..' <b>send to you a report:</b>', 1, 'html')
+    tdcli.sendMessage(msg.chat_id_, 0, 1,  '_'گزارش داده_', 1, 'md')
+    tdcli.sendMessage(master, 0, 1, '[ <code>'..msg.sender_user_id_..'</code> ] '..user_name..' <b>گزارش داده شد!:</b>', 1, 'html')
     tdcli.forwardMessages(master, msg.chat_id_,{[0] = msg.reply_to_message_id_}, 0,dl_cb,nil)
    end
   else

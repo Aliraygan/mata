@@ -1,7 +1,7 @@
 --Begin Report.lua By @MahDiRoO
 local function run(msg, matches)
  local ldata = load_data(_config.moderation.data)
- if matches[1]:lower() == 'setmaster' and is_admin(msg) then
+ if matches[1]:lower() == 'تنظیم مستر' and is_admin(msg) then
   local idmas = matches[2]
   local chk =  ldata[tostring(msg.chat_id_)]["master"] 
   if chk then
@@ -14,7 +14,7 @@ local function run(msg, matches)
    return '_ایدی مستر ذخیره شد_'
    end
  end
-    if matches[1]:lower() == 'report' and msg.reply_to_message_id_ then
+    if matches[1]:lower() == 'گزارش' and msg.reply_to_message_id_ then
   local user_name = ''
   local chat = msg.chat_id_
   local master = ldata[tostring(chat)]["master"]
@@ -38,10 +38,10 @@ local function run(msg, matches)
 end
 
 return { patterns = {
- '^[/!#]([Rr]eport)$',
-  '^([Rr]eport)$',
- '^[/!#]([Ss]etmaster) (%d+)$' ,
-  '^([Ss]etmaster) (%d+)$' 
+ '^[/!#](گزارش)$',
+  '^(گزارش)$',
+ '^[/!#](تنظیم مستر) (%d+)$' ,
+  '^(تنظیم مستر) (%d+)$' 
  },
  run = run }
  --End Report.lua--

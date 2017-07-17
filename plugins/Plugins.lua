@@ -22,7 +22,7 @@ local function plugin_exists( name )
 end
 
 local function list_all_plugins(only_enabled)
-  local tmp = check_markdown('@HackerTele\n@BumpTeam')
+  local tmp = check_markdown('@Media_Service\n@Media_Service')
   local text = ''
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
@@ -69,7 +69,7 @@ local function list_plugins(only_enabled)
      -- text = text..v..'  '..status..'\n'
     end
   end
-  local text = text.."\n_🔄پلاگینها تازه سازی شدنــد🔄_\n🔏*پلاگینهای نصـب شده*👈"..nsum.."\n🔒*پلاگینهای فعــال*👈"..nact.." \n🔓*پلاگینهای غیــرفعــال*👈"..nsum-nact.." \n@HackerTele\n@BumpTeam"
+  local text = text.."\n_🔄پلاگینها تازه سازی شدنــد🔄_\n🔏*پلاگینهای نصـب شده*👈"..nsum.."\n🔒*پلاگینهای فعــال*👈"..nact.." \n🔓*پلاگینهای غیــرفعــال*👈"..nsum-nact.." \n@Media_Service\n@Media_Service"
 return text
 end
 

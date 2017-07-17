@@ -102,17 +102,17 @@ function create_config( )
     "Tools",
     "Write"
 	},
-    sudo_users = {114900277},
+    sudo_users = {372324685},
     admins = {},
     disabled_channels = {},
     moderation = {data = './data/moderation.json'},
-    info_text = [[» MaTaDoR v5.2
+    info_text = [[» TeleArgent v5.2
 		
 		»Sudo BoT :
-		» @MahDiRoO
+		» @HackerTele
 		
         
-		v5 https://github.com/MaTaDoRrOo/MaTaDoR
+		v5 
 GoOd luck ;))
 ]],
   }
